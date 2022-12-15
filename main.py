@@ -82,12 +82,14 @@ def getPlotCSV():
     df.to_csv('b1.csv')
     fp=io.open("b1.csv", mode="r", encoding="utf-8")
     csv = fp.read()
-    return Response(
-        csv,
-        mimetype="text/csv",
-        headers={"Content-disposition":
-                 "attachment; filename=myplot.csv"})
-
+    try:
+        return Response(
+            csv,
+            mimetype="text/csv",
+            headers={"Content-disposition":
+                    "attachment; filename=myplot.csv"})
+    except:
+        return 'Erro'
     
 
     
